@@ -63,7 +63,7 @@ update prescription
 alter table bill modify column total int default 0;
 insert into bill(bid,prid,phid) values(501,1,102),(502,2,104),(503,3,103);
 update bill
-	set total=(select sum(price) from prescription where prescriptio.prid=bill.prid);
+	set total=(select sum(price) from prescription where prescription.prid=bill.prid);
 
 #displaying bill
 select distinct bid,pname,phname,drname,total from bill,pharmacy,prescription,patient,doctor
