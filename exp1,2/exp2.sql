@@ -54,9 +54,9 @@ insert into prescription(prid,drugid,pid,drid) values(1,1,301,401),
 	(2,5,302,401),
     (3,6,303,402),
     (3,4,303,402);
-select prid,drugname,pharmacy.phid,phname from drugs,pharmacy,manufacturer,contract,prescription
+/*select prid,drugname,pharmacy.phid,phname from drugs,pharmacy,manufacturer,contract,prescription
 	where (pharmacy.phid=contract.phid and manufacturer.mid=contract.mid and drugs.mid=manufacturer.mid and prescription.drugid=drugs.drugid)
-    order by prid,phname;
+    order by prid,phname;*/
 update prescription 
 	set price=quantity*(select price from drugs where drugs.drugid=prescription.drugid);
 
@@ -66,6 +66,6 @@ update bill
 	set total=(select sum(price) from prescription where prescription.prid=bill.prid);
 
 #displaying bill
-select distinct bid,pname,phname,drname,total from bill,pharmacy,prescription,patient,doctor
+/*select distinct bid,pname,phname,drname,total from bill,pharmacy,prescription,patient,doctor
 	where (pharmacy.phid=bill.phid and bill.prid=prescription.prid and prescription.pid=patient.pid and prescription.drid=doctor.drid)
-    order by bid;
+    order by bid;*/
